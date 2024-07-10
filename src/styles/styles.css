@@ -1,4 +1,101 @@
 body {
-    font-family: Arial, sans-serif;
-  }
-  
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(180deg, #6EC3F4 0%, #A9DEF9 100%);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background: url("../images/vintage-world.jpeg") no-repeat center center/cover;
+
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3em;
+    color: #fff;
+    background: linear-gradient(180deg, rgb(99, 99, 99) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+header .logo {
+    padding: 1em;
+    position: absolute;
+    left: 20px;
+    font-size: 2.5em;
+}
+
+header .login-register {
+    position: absolute;
+    right: 20px;
+    padding: 1em;
+    background: rgba(49, 49, 49, 0.185); /* Fondo minimalista semi-transparente */
+    border-radius: 10px; /* Bordes redondeados para un toque elegante */
+    backdrop-filter: blur(10px); /* Desenfoque de fondo para el efecto de vidrio esmerilado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+header .login-register a {
+    color: #fff;
+    margin-left: 10px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+header .login-register a:hover {
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 20em;
+    margin-top: 20px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #c5c5c5;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #0056b3;
+}
+
+.location-info {
+    background: rgba(69, 69, 69, 0.454); /* Fondo minimalista semi-transparente */
+    border-radius: 10px; /* Bordes redondeados para un toque elegante */
+    backdrop-filter: blur(10px); /* Desenfoque de fondo para el efecto de vidrio esmerilado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);     
+    margin-top: 2em;
+    color: white;
+    text-align: center;
+    width: 100%;
+    text-shadow: rgb(86, 85, 85) 4px 3px;
+}
+
+.location-info h2 {
+    font-size: 2em;
+}
+
+.location-info p {
+    font-size: 2em;
+
+}
