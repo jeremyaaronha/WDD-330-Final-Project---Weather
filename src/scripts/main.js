@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerCloseButton = document.getElementById("register-close");
     let isCelsius = true; // Variable para controlar la unidad de medida
 
-    const apiKey = "0066e3596484e7ae608d23fe3959f109"; // Reemplaza con tu clave de API de OpenWeather
-    const geoDbApiKey = "your-rapidapi-key"; // Reemplaza con tu clave de API de GeoDB Cities
+    const apiKey = "0066e3596484e7ae608d23fe3959f109"; 
+    const geoDbApiKey = "e910cc3969msh71ab17d4f77c665p1b6bfajsn5ecd6ff742cf"; 
 
     const fetchWeatherData = async (latitude, longitude) => {
         try {
-            const units = isCelsius ? 'metric' : 'imperial'; // Usar unidad según el estado
+            const units = isCelsius ? 'metric' : 'imperial'; 
             const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`);
 
             if (!weatherResponse.ok) {
@@ -32,9 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const city = weatherData.name;
             const country = weatherData.sys.country;
             const temperature = weatherData.main.temp;
+            const weatherIcon = weatherData.weather[0].icon;
+            const weatherDescription = weatherData.weather[0].description;
 
             cityNameElem.textContent = `Temperature in ${city}, ${country}`;
-            temperatureElem.textContent = `${temperature} °${isCelsius ? 'C' : 'F'}`;
+            temperatureElem.innerHTML = `
+            
+            <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">${temperature} °${isCelsius ? 'C' : 'F'}
+        `;
 
             const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`);
 
@@ -45,25 +50,40 @@ document.addEventListener("DOMContentLoaded", () => {
             const forecastData = await forecastResponse.json();
             const forecastList = forecastData.list;
 
-            const forecastDays = forecastList.filter(item => new Date(item.dt_txt).getHours() === 12).slice(0, 5);
+            // Agrupar las temperaturas por día
+            const dailyForecasts = forecastList.reduce((acc, curr) => {
+                const date = new Date(curr.dt_txt).toDateString();
+                if (!acc[date]) {
+                    acc[date] = [];
+                }
+                acc[date].push(curr.main.temp_min, curr.main.temp_max);
+                return acc;
+            }, {});
+
+            // Obtener pronostico 5 dias, excluyendo hoy
+            const forecastDays = Object.keys(dailyForecasts).slice(0, 5);
 
             const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
             forecastContainer.innerHTML = '';
-            forecastDays.forEach(day => {
-                const date = new Date(day.dt_txt);
-                const dayName = daysOfWeek[date.getUTCDay()];
-                const monthName = months[date.getUTCMonth()];
-                const formattedDate = `${dayName}, ${monthName} ${date.getUTCDate()}`;
+            forecastDays.forEach(date => {
+                const temps = dailyForecasts[date];
+                const minTemp = Math.min(...temps);
+                const maxTemp = Math.max(...temps);
+
+                const dayDate = new Date(date);
+                const dayName = daysOfWeek[dayDate.getUTCDay()];
+                const monthName = months[dayDate.getUTCMonth()];
+                const formattedDate = `${dayName}, ${monthName} ${dayDate.getUTCDate()}`;
 
                 const forecastElem = document.createElement('div');
                 forecastElem.classList.add('forecast-day');
                 forecastElem.innerHTML = `
                     <p>${formattedDate}</p>
-                    <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="${day.weather[0].description}">
-                    <p>Min: ${day.main.temp_min} °${isCelsius ? 'C' : 'F'}</p>
-                    <p>Max: ${day.main.temp_max} °${isCelsius ? 'C' : 'F'}</p>
+                    <img src="http://openweathermap.org/img/wn/${forecastList.find(item => new Date(item.dt_txt).toDateString() === date).weather[0].icon}@2x.png" alt="${forecastList.find(item => new Date(item.dt_txt).toDateString() === date).weather[0].description}">
+                    <p>Min: ${minTemp} °${isCelsius ? 'C' : 'F'}</p>
+                    <p>Max: ${maxTemp} °${isCelsius ? 'C' : 'F'}</p>
                 `;
                 forecastContainer.appendChild(forecastElem);
             });
@@ -170,23 +190,107 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Mostrar formularios
-    loginButton.addEventListener("click", () => {
-        loginForm.style.display = "block";
-    });
+// Mostrar formularios
+loginButton.addEventListener("click", () => {
+    loginForm.style.display = "block";
+    registerForm.style.display = "none"; // Cerrar el formulario de registro si está abierto
+});
 
-    registerButton.addEventListener("click", () => {
-        registerForm.style.display = "block";
-    });
+registerButton.addEventListener("click", () => {
+    registerForm.style.display = "block";
+    loginForm.style.display = "none"; // Cerrar el formulario de inicio de sesión si está abierto
+});
 
-    // Cerrar formularios
-    loginCloseButton.addEventListener("click", () => {
-        loginForm.style.display = "none";
-    });
+// Mostrar formulario de inicio de sesión desde el enlace en el formulario de registro
+document.getElementById("show-login").addEventListener("click", (e) => {
+    e.preventDefault();
+    loginForm.style.display = "block";
+    registerForm.style.display = "none";
+});
 
-    registerCloseButton.addEventListener("click", () => {
+// Mostrar formulario de registro desde el enlace en el formulario de inicio de sesión
+document.getElementById("show-register").addEventListener("click", (e) => {
+    e.preventDefault();
+    registerForm.style.display = "block";
+    loginForm.style.display = "none";
+});
+
+// Cerrar formularios
+loginCloseButton.addEventListener("click", () => {
+    loginForm.style.display = "none";
+});
+
+registerCloseButton.addEventListener("click", () => {
+    registerForm.style.display = "none";
+});
+
+// Lógica de registro
+registerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = registerForm.querySelector('input[placeholder="Username"]').value;
+    const email = registerForm.querySelector('input[placeholder="Email"]').value;
+    const password = registerForm.querySelector('input[placeholder="Password"]').value;
+
+    // Verificar si el usuario ya existe en localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const userExists = users.some(user => user.email === email || user.username === username);
+
+    if (userExists) {
+        alert('Username or email is already taken. Please choose another.');
+    } else {
+        const newUser = { username, email, password };
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Registration successful! You can now log in.');
         registerForm.style.display = "none";
-    });
+        loginForm.style.display = "block";
+    }
+});
 
-    // Aquí puedes agregar la lógica de registro y log in cuando se envían los formularios
+
+// Función para actualizar el header después del inicio de sesión
+const updateHeaderForLoggedInUser = (username) => {
+    const loginRegisterDiv = document.querySelector(".login-register");
+    loginRegisterDiv.innerHTML = `Bienvenido, ${username}! <a href="#" id="logout">Cerrar sesión</a>`;
+
+    // Añadir el evento de cerrar sesión
+    const logoutLink = document.getElementById("logout");
+    logoutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("loggedInUser");
+        location.reload(); // Recargar la página para volver al estado inicial
+    });
+};
+
+// Lógica de inicio de sesión
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const identifier = loginForm.querySelector('input[type="text"]').value; // Puede ser correo electrónico o nombre de usuario
+    const password = loginForm.querySelector('input[type="password"]').value;
+
+    // Verificar usuario en localStorage
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = users.find(user => (user.email === identifier || user.username === identifier) && user.password === password);
+
+    if (user) {
+        alert(`Welcome, ${user.username}!`);
+        localStorage.setItem("loggedInUser", JSON.stringify(user));
+        loginForm.style.display = "none";
+        updateHeaderForLoggedInUser(user.username);
+    } else {
+        alert('Invalid email/username or password. Please try again.');
+    }
+});
+
+
+
+// Verificar si hay un usuario logueado al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (loggedInUser) {
+        updateHeaderForLoggedInUser(loggedInUser.username);
+    }
+});
+
+
 });

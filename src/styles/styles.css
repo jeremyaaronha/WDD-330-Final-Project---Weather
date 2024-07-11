@@ -88,7 +88,6 @@ main {
 .suggestions-container {
     position: absolute;
     background: white;
-    border: 1px solid #ccc;
     max-height: 150px;
     overflow-y: auto;
     width: 100%;
@@ -118,13 +117,23 @@ main {
     margin-top: 1em;
     color: rgb(0, 0, 0);
     text-align: center;
-    width: 50em;
-    padding: 1em;
+    width: 100%;
+    padding: .5em;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Asegura que el contenido esté alineado en el centro */
+    justify-content: center; /* Centra el contenido verticalmente */
+}
+
+#temperature img {
+    display: block;
+    margin: 0 auto;
 }
 
 .location-info h2 {
     font-size: 1.5em;
+    margin-bottom: .1em;
 }
 
 .location-info p {
@@ -138,7 +147,7 @@ main {
 }
 
 .forecast h3 {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 #forecast-container {
@@ -160,7 +169,7 @@ main {
     text-align: center;
     flex-grow: 1;
     margin: 0 5px;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 .forecast-day img {
@@ -302,6 +311,9 @@ main {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: none; /* Initially hidden */
     z-index: 1001;
+    width: 20em;
+    height: 20em;
+    font-size: 1.5em;
 }
 
 .form-container form {
@@ -317,7 +329,8 @@ main {
 }
 
 .form-container button {
-    padding: 10px;
+    padding: 15px;
+    margin: 10px;
     border: none;
     border-radius: 5px;
     background-color: #007bff;
