@@ -1,18 +1,11 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
 
 export default defineConfig({
-  root: 'src/',
+  root: 'src', // Apuntar a la carpeta src
   build: {
-    outDir: '../dist',
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'src/index.html'),
-      },
-    },
+    outDir: '../dist', // La carpeta de salida debe estar fuera de src
   },
   server: {
-    port: 3000,
-    open: true,
-  },
+    open: true
+  }
 });
