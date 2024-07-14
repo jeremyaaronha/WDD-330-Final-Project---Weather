@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const forecastData = await forecastResponse.json();
             const forecastList = forecastData.list;
 
-            // Agrupar las temperaturas por día
+            // temperaturas por dia
             const dailyForecasts = forecastList.reduce((acc, curr) => {
                 const date = new Date(curr.dt_txt).toDateString();
                 if (!acc[date]) {
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return acc;
             }, {});
 
-            // Obtener pronostico 5 dias, excluyendo hoy
+            // pronostico 5 dias, excluyendo hoy
             const forecastDays = Object.keys(dailyForecasts).slice(0, 5);
 
             const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -224,7 +224,7 @@ registerCloseButton.addEventListener("click", () => {
     registerForm.style.display = "none";
 });
 
-// Lógica de registro
+// registro
 registerForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const username = registerForm.querySelector('input[placeholder="Username"]').value;
@@ -248,7 +248,7 @@ registerForm.addEventListener("submit", (e) => {
 });
 
 
-// Función para actualizar el header después del inicio de sesión
+// actualizar el header después del inicio de sesión
 const updateHeaderForLoggedInUser = (username) => {
     const loginRegisterDiv = document.querySelector(".login-register");
     loginRegisterDiv.innerHTML = `Bienvenido, ${username}! <a href="#" id="logout">Cerrar sesión</a>`;
@@ -258,11 +258,11 @@ const updateHeaderForLoggedInUser = (username) => {
     logoutLink.addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.removeItem("loggedInUser");
-        location.reload(); // Recargar la página para volver al estado inicial
+        location.reload();
     });
 };
 
-// Lógica de inicio de sesión
+// inicio de sesión
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const identifier = loginForm.querySelector('input[type="text"]').value; // Puede ser correo electrónico o nombre de usuario
@@ -284,7 +284,7 @@ loginForm.addEventListener("submit", (e) => {
 
 
 
-// Verificar si hay un usuario logueado al cargar la página
+// Verificar si hay un usuario al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
     if (loggedInUser) {

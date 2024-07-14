@@ -9,7 +9,6 @@
     "sourceType": "module"
   },
   "rules": {
-    // Tus reglas personalizadas aquí
   },
   "globals": {
     "module": "readonly",

@@ -20,7 +20,6 @@ export default defineConfig([
     },
     extends: 'airbnb-base',
     rules: {
-      // Tus reglas personalizadas aquí
     },
   },
 ]);

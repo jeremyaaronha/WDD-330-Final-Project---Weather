@@ -32,16 +32,16 @@ header .logo {
 
 header .logo a {
     text-decoration: none;
-    color: inherit; /* Mantener el color del texto */
+    color: inherit; 
 }
 
 header .login-register {
     position: absolute;
     right: 10px;
     padding: 0.5em;
-    background: rgba(49, 49, 49, 0.185); /* Fondo minimalista semi-transparente */
-    border-radius: 10px; /* Bordes redondeados para un toque elegante */
-    backdrop-filter: blur(10px); /* Desenfoque de fondo para el efecto de vidrio esmerilado */
+    background: rgba(49, 49, 49, 0.185); 
+    border-radius: 10px; 
+    backdrop-filter: blur(10px); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
@@ -63,7 +63,7 @@ main {
     padding: 10px;
     width: 100%;
     flex-grow: 1;
-    overflow: auto; /* Permitir desplazamiento en el contenedor principal */
+    overflow: auto; 
 }
 
 .search-container {
@@ -121,8 +121,8 @@ main {
 }
 
 .location-info {
-    background: rgb(255, 255, 255); /* Fondo minimalista semi-transparente */
-    backdrop-filter: blur(10px); /* Desenfoque de fondo para el efecto de vidrio esmerilado */
+    background: rgb(255, 255, 255); 
+    backdrop-filter: blur(10px); 
     margin-top: 1em;
     color: rgb(0, 0, 0);
     text-align: center;
@@ -131,8 +131,8 @@ main {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Asegura que el contenido esté alineado en el centro */
-    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; 
+    justify-content: center; 
 }
 
 #temperature img {
@@ -186,7 +186,7 @@ main {
     height: 100px;
 }
 
-/* Media Queries para Dispositivos Móviles */
+/*Dispositivos Móviles */
 @media (max-width: 768px) {
     header {
         padding: 1.5em;
@@ -262,7 +262,7 @@ main {
 
     main {
         padding: 5px;
-        overflow: auto; /* Permitir desplazamiento en dispositivos móviles */
+        overflow: auto; 
     }
 
     .search-container {
@@ -318,7 +318,7 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; /* Initially hidden */
+    display: none; 
     z-index: 1001;
     width: 20em;
     height: 20em;
