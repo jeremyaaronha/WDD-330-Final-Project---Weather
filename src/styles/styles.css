@@ -9,17 +9,21 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
-    background: url("../images/vintage-world.jpeg") no-repeat center center/cover;
+    background: url("../images/vintage-world.jpeg") no-repeat center center/cover; 
 }
 
 header {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2em;
     color: #fff;
-    background: linear-gradient(180deg, rgb(99, 99, 99) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+#header-container {
+    width: 100%;
+    /* background: linear-gradient(180deg, rgb(99, 99, 99) 0%, rgba(0, 0, 0, 0) 100%); */
+    padding: 3.5em;
+    background-color: white;
 }
 
 header .logo {
@@ -28,28 +32,39 @@ header .logo {
     left: 10px;
     font-size: 2em;
     text-decoration: none;
+    color: rgb(0, 0, 0);
 }
 
 header .logo a {
     text-decoration: none;
-    color: inherit; 
+    color: rgba(102, 192, 115, 0.839);
+    font-size: 38px;
 }
 
 header .login-register {
     position: absolute;
-    right: 10px;
-    padding: 0.5em;
+    right: 1em;
+    margin: 10px;
+    padding: 2em;
     background: rgba(49, 49, 49, 0.185); 
     border-radius: 10px; 
     backdrop-filter: blur(10px); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 2px ;
+    background-color: rgba(102, 192, 115, 0.839);
+    border: none;
+    box-shadow: rgba(186, 185, 185, 0.465) 3px 3px;
+    color: rgb(255, 255, 255);
+}
+
+header .login-register a:hover {
+    color: rgb(106, 106, 106)
 }
 
 header .login-register a {
     color: #fff;
     margin-left: 10px;
     text-decoration: none;
-    font-weight: 500;
+    font-size: 24px;
 }
 
 header .login-register a:hover {
@@ -69,7 +84,7 @@ main {
 .search-container {
     width: 100%;
     max-width: 40em;
-    margin-top: 10px;
+    margin-top: 24px;
     margin-bottom: 2em;
 }
 
@@ -80,7 +95,7 @@ main {
     border-radius: 5px;
     font-size: 28px;
     height: 100%;
-    max-height: 30em;
+    max-height: 40em;
 }
 
 .search-container input:focus {
@@ -106,18 +121,23 @@ main {
     background-color: #f0f0f0;
 }
 
-#unit-toggle {
-    margin-top: 10px;
-    padding: 10px 10px;
+#unit-toggle  {
+    margin: 18px;
+    padding: 12px;
     cursor: pointer;
     width: 200px;
     height: 80px;
     font-size: 28px;
     text-decoration: none;
+    border-radius: 2px ;
+    background-color: rgba(102, 192, 115, 0.839);
+    border: none;
+    box-shadow: rgba(186, 185, 185, 0.465) 3px 3px;
+    color: rgb(255, 255, 255);
 }
 
 #unit-toggle:hover {
-    color: rgb(142, 142, 142)
+    color: rgb(106, 106, 106)
 }
 
 .location-info {
@@ -126,7 +146,7 @@ main {
     margin-top: 1em;
     color: rgb(0, 0, 0);
     text-align: center;
-    width: 100%;
+    width: 32rem;
     padding: .5em;
     border-radius: 10px;
     display: flex;
@@ -138,15 +158,16 @@ main {
 #temperature img {
     display: block;
     margin: 0 auto;
+    width: 140px;
 }
 
 .location-info h2 {
-    font-size: 1.5em;
+    font-size: 32px;
     margin-bottom: .1em;
 }
 
 .location-info p {
-    font-size: 2em;
+    font-size: 32px;
 }
 
 .forecast {
@@ -155,16 +176,12 @@ main {
     width: 100%;
 }
 
-.forecast h3 {
-    font-size: 18px;
-}
-
 #forecast-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    max-width: 800px;
+    max-width: 82rem;
     background-color: white;
     padding: 1.5em;
     border-radius: 10px;
@@ -178,86 +195,32 @@ main {
     text-align: center;
     flex-grow: 1;
     margin: 0 5px;
-    font-size: 1.1em;
+    font-size: 32px;
 }
 
 .forecast-day img {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
 }
 
-/*Dispositivos Móviles */
-@media (max-width: 768px) {
-    header {
-        padding: 1.5em;
-    }
 
-    header .logo {
-        font-size: 1.5em;
-    }
 
-    header .login-register {
-        padding: 0.5em;
-        right: 5px;
-    }
-
-    main {
-        padding: 10px;
-        overflow: auto; /* Permitir desplazamiento en dispositivos móviles */
-    }
-
-    .search-container {
-        margin-top: 5px;
-    }
-
-    .location-info {
-        padding: 0.5em;
-        margin-top: 1em;
-        width: 43em;
-    }
-
-    .location-info h2 {
-        font-size: 1.2em;
-    }
-
-    .location-info p {
-        font-size: 1.5em;
-    }
-
-    .forecast {
-        margin-top: 10px;
-    }
-
-    #forecast-container {
-        flex-direction: column;
-        padding: 0.5em;
-        margin: 1em 0;
-        width: 90%;
-    }
-
-    .forecast-day {
-        padding: 1em;
-        margin: 1px 0;
-        font-size: 1.5em;
-    }
-
-    .forecast-day img {
-        width: 80px;
-        height: 80px;
-    }
-}
-
-@media (max-width: 480px) {
+@media (max-width: 1420px) {
     header {
         padding: 1em;
     }
 
     header .logo {
-        font-size: 1.2em;
+        font-size: 34px;
     }
 
     header .login-register {
-        font-size: 0.8em;
+        padding: 2em;
+    }
+
+    header .login-register a {
+        font-size: 1.5em;
+        padding: 1em;
     }
 
     main {
@@ -266,46 +229,46 @@ main {
     }
 
     .search-container {
-        max-width: 100%;
-        margin-top: 5px;
+        max-width: 80%;
+        margin-top: 24px;
     }
 
     .search-container input {
         padding: 5px;
-        font-size: 12px;
+        font-size: 32px;
     }
 
     .location-info {
         padding: 0.5em;
-        width: 1em;
+        width: 42rem;
     }
 
     .location-info h2 {
-        font-size: 1em;
+        font-size: 32px;
     }
 
     .location-info p {
-        font-size: 1.2em;
+        font-size: 32px;
     }
 
     .forecast h3 {
-        font-size: 1em;
+        font-size: 32px;
     }
 
     #forecast-container {
         padding: 1.5em;
         flex-direction: column;
+        width: 85% ;
     }
 
     .forecast-day {
-        padding: 1em;
         margin: 5px 0;
-        font-size: 1.5em;
+        font-size: 32px;
     }
 
     .forecast-day img {
-        width: 60px;
-        height: 60px;
+        width: 120px;
+        height: 120px;
     }
 }
 
@@ -318,8 +281,7 @@ main {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none; 
-    z-index: 1001;
+    z-index: 100;
     width: 20em;
     height: 20em;
     font-size: 1.5em;

@@ -7,6 +7,10 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: 'src/index.html',
+      input: 'src/partials/header.html',
+      input: 'src/partials/footer.html',
+      input: 'src/login/login.html.html',
+      input: 'src/register/register.html'
     },
   },
   server: {
