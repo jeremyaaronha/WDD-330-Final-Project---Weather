@@ -7,9 +7,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh; 
     background: url("../images/vintage-world.jpeg") no-repeat center center/cover; 
+    box-sizing: border-box; 
+    overflow: auto; 
 }
 
 header {
@@ -22,7 +23,7 @@ header {
 #header-container {
     width: 100%;
     /* background: linear-gradient(180deg, rgb(99, 99, 99) 0%, rgba(0, 0, 0, 0) 100%); */
-    padding: 3.5em;
+    padding: 3.5em 0;
     background-color: white;
 }
 
@@ -44,7 +45,7 @@ header .logo a {
 header .login-register {
     position: absolute;
     right: 1em;
-    margin: 10px;
+    margin: 10px 0;
     padding: 2em;
     background: rgba(49, 49, 49, 0.185); 
     border-radius: 10px; 
@@ -57,7 +58,7 @@ header .login-register {
 }
 
 header .login-register a:hover {
-    color: rgb(106, 106, 106)
+    color: rgb(106, 106, 106);
 }
 
 header .login-register a {
@@ -75,7 +76,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 10px 0;
     width: 100%;
     flex-grow: 1;
     overflow: auto; 
@@ -203,9 +204,27 @@ main {
     height: 140px;
 }
 
+footer {
+    width: 100%;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: auto; /* Asegura que el footer se mantenga en la parte inferior */
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+}
 
+@media (max-width: 1360px) {
 
-@media (max-width: 1420px) {
+    .forecast-day {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 765px) {
+
     header {
         padding: 1em;
     }
@@ -272,8 +291,9 @@ main {
     }
 }
 
+
 .form-container {
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -282,9 +302,9 @@ main {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 100;
-    width: 20em;
-    height: 20em;
-    font-size: 1.5em;
+    width: 40rem;
+    height: 35rem;
+    font-size: 32px;
 }
 
 .form-container form {
@@ -293,10 +313,11 @@ main {
 }
 
 .form-container input {
-    margin: 10px 0;
+    margin: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 32px;
 }
 
 .form-container button {
@@ -307,10 +328,12 @@ main {
     background-color: #007bff;
     color: white;
     cursor: pointer;
+    background-color: rgba(102, 192, 115, 0.839);
+    font-size: 32px;
 }
 
 .form-container button:hover {
-    background-color: #0056b3;
+    background-color: green;
 }
 
 .form-container p {
