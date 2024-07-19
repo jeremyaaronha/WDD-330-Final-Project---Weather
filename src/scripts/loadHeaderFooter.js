@@ -1,18 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const loadHTML = async (url, containerId) => {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error(`Failed to load ${url}`);
+    fetch("../partials/header.html")
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector("header").innerHTML = data;
+            const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+            if (loggedInUser) {
+                updateHeaderForLoggedInUser(loggedInUser.username);
             }
-            const html = await response.text();
-            document.getElementById(containerId).innerHTML = html;
-        } catch (error) {
-            console.error("Error loading HTML:", error);
-            document.getElementById(containerId).innerHTML = `<p>Error loading ${url}</p>`;
-        }
-    };
+        });
 
-    loadHTML('../partials/header.html', 'header-container');
-    loadHTML('../partials/footer.html', 'footer-container');
+    fetch("../partials/footer.html")
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector("footer").innerHTML = data;
+        });
 });
+
+const updateHeaderForLoggedInUser = (username) => {
+    const loginRegisterDiv = document.querySelector(".login-register");
+    loginRegisterDiv.innerHTML = `Welcome, ${username}! <a href="#" id="logout">Log Out</a>`;
+
+    const logoutLink = document.getElementById("logout");
+    logoutLink.addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("loggedInUser");
+        location.reload();
+    });
+};

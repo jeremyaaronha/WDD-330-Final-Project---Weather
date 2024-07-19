@@ -8,12 +8,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.querySelector(".search-container input");
     const suggestionsContainer = document.querySelector('.suggestions-container');
     const unitToggle = document.getElementById("unit-toggle");
-    const loginForm = document.getElementById("login-form");
-    const registerForm = document.getElementById("register-form");
-    const loginButton = document.getElementById("login-button");
-    const registerButton = document.getElementById("register-button");
-    const loginCloseButton = document.getElementById("login-close");
-    const registerCloseButton = document.getElementById("register-close");
+    // const loginForm = document.getElementById("login-form");
+    // const registerForm = document.getElementById("register-form");
+    // const loginButton = document.getElementById("login-button");
+    // const registerButton = document.getElementById("register-button");
+    // const loginCloseButton = document.getElementById("login-close");
+    // const registerCloseButton = document.getElementById("register-close");
     let isCelsius = true; // Variable para controlar la unidad de medida
 
     const apiKey = "0066e3596484e7ae608d23fe3959f109"; 
@@ -190,107 +190,74 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-// Mostrar formularios
-loginButton.addEventListener("click", () => {
-    loginForm.style.display = "block";
-    registerForm.style.display = "none"; // Cerrar el formulario de registro si está abierto
-});
 
-registerButton.addEventListener("click", () => {
-    registerForm.style.display = "block";
-    loginForm.style.display = "none"; // Cerrar el formulario de inicio de sesión si está abierto
-});
+// // registro
+// registerForm.addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     const username = registerForm.querySelector('input[placeholder="Username"]').value;
+//     const email = registerForm.querySelector('input[placeholder="Email"]').value;
+//     const password = registerForm.querySelector('input[placeholder="Password"]').value;
 
-// Mostrar formulario de inicio de sesión desde el enlace en el formulario de registro
-document.getElementById("show-login").addEventListener("click", (e) => {
-    e.preventDefault();
-    loginForm.style.display = "block";
-    registerForm.style.display = "none";
-});
+//     // Verificar si el usuario ya existe en localStorage
+//     const users = JSON.parse(localStorage.getItem('users')) || [];
+//     const userExists = users.some(user => user.email === email || user.username === username);
 
-// Mostrar formulario de registro desde el enlace en el formulario de inicio de sesión
-document.getElementById("show-register").addEventListener("click", (e) => {
-    e.preventDefault();
-    registerForm.style.display = "block";
-    loginForm.style.display = "none";
-});
-
-// Cerrar formularios
-loginCloseButton.addEventListener("click", () => {
-    loginForm.style.display = "none";
-});
-
-registerCloseButton.addEventListener("click", () => {
-    registerForm.style.display = "none";
-});
-
-// registro
-registerForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const username = registerForm.querySelector('input[placeholder="Username"]').value;
-    const email = registerForm.querySelector('input[placeholder="Email"]').value;
-    const password = registerForm.querySelector('input[placeholder="Password"]').value;
-
-    // Verificar si el usuario ya existe en localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const userExists = users.some(user => user.email === email || user.username === username);
-
-    if (userExists) {
-        alert('Username or email is already taken. Please choose another.');
-    } else {
-        const newUser = { username, email, password };
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-        alert('Registration successful! You can now log in.');
-        registerForm.style.display = "none";
-        loginForm.style.display = "block";
-    }
-});
+//     if (userExists) {
+//         alert('Username or email is already taken. Please choose another.');
+//     } else {
+//         const newUser = { username, email, password };
+//         users.push(newUser);
+//         localStorage.setItem('users', JSON.stringify(users));
+//         alert('Registration successful! You can now log in.');
+//         registerForm.style.display = "none";
+//         loginForm.style.display = "block";
+//     }
+// });
 
 
-// actualizar el header después del inicio de sesión
-const updateHeaderForLoggedInUser = (username) => {
-    const loginRegisterDiv = document.querySelector(".login-register");
-    loginRegisterDiv.innerHTML = `Bienvenido, ${username}! <a href="#" id="logout">Cerrar sesión</a>`;
+// // actualizar el header después del inicio de sesión
+// const updateHeaderForLoggedInUser = (username) => {
+//     const loginRegisterDiv = document.querySelector(".login-register");
+//     loginRegisterDiv.innerHTML = `Bienvenido, ${username}! <a href="#" id="logout">Cerrar sesión</a>`;
 
-    // Añadir el evento de cerrar sesión
-    const logoutLink = document.getElementById("logout");
-    logoutLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        localStorage.removeItem("loggedInUser");
-        location.reload();
-    });
-};
+//     // Añadir el evento de cerrar sesión
+//     const logoutLink = document.getElementById("logout");
+//     logoutLink.addEventListener("click", (e) => {
+//         e.preventDefault();
+//         localStorage.removeItem("loggedInUser");
+//         location.reload();
+//     });
+// };
 
-// inicio de sesión
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const identifier = loginForm.querySelector('input[type="text"]').value; // Puede ser correo electrónico o nombre de usuario
-    const password = loginForm.querySelector('input[type="password"]').value;
+// // inicio de sesión
+// loginForm.addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     const identifier = loginForm.querySelector('input[type="text"]').value; // Puede ser correo electrónico o nombre de usuario
+//     const password = loginForm.querySelector('input[type="password"]').value;
 
-    // Verificar usuario en localStorage
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-    const user = users.find(user => (user.email === identifier || user.username === identifier) && user.password === password);
+//     // Verificar usuario en localStorage
+//     const users = JSON.parse(localStorage.getItem('users')) || [];
+//     const user = users.find(user => (user.email === identifier || user.username === identifier) && user.password === password);
 
-    if (user) {
-        alert(`Welcome, ${user.username}!`);
-        localStorage.setItem("loggedInUser", JSON.stringify(user));
-        loginForm.style.display = "none";
-        updateHeaderForLoggedInUser(user.username);
-    } else {
-        alert('Invalid email/username or password. Please try again.');
-    }
-});
+//     if (user) {
+//         alert(`Welcome, ${user.username}!`);
+//         localStorage.setItem("loggedInUser", JSON.stringify(user));
+//         loginForm.style.display = "none";
+//         updateHeaderForLoggedInUser(user.username);
+//     } else {
+//         alert('Invalid email/username or password. Please try again.');
+//     }
+// });
 
 
 
-// Verificar si hay un usuario al cargar la página
-document.addEventListener("DOMContentLoaded", () => {
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-    if (loggedInUser) {
-        updateHeaderForLoggedInUser(loggedInUser.username);
-    }
-});
+// // Verificar si hay un usuario al cargar la página
+// document.addEventListener("DOMContentLoaded", () => {
+//     const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+//     if (loggedInUser) {
+//         updateHeaderForLoggedInUser(loggedInUser.username);
+//     }
+// });
 
 
 });

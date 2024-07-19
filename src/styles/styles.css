@@ -15,12 +15,9 @@ body {
 
 header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     color: #fff;
-}
-
-#header-container {
     width: 100%;
     /* background: linear-gradient(180deg, rgb(99, 99, 99) 0%, rgba(0, 0, 0, 0) 100%); */
     padding: 3.5em 0;
@@ -46,7 +43,7 @@ header .login-register {
     position: absolute;
     right: 1em;
     margin: 10px 0;
-    padding: 2em;
+    padding: 1.5em;
     background: rgba(49, 49, 49, 0.185); 
     border-radius: 10px; 
     backdrop-filter: blur(10px); 
@@ -76,9 +73,10 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 10px 0;
     width: 100%;
-    flex-grow: 1;
+    flex: 1;
     overflow: auto; 
 }
 
@@ -159,7 +157,7 @@ main {
 #temperature img {
     display: block;
     margin: 0 auto;
-    width: 140px;
+    width: 100px;
 }
 
 .location-info h2 {
@@ -196,101 +194,13 @@ main {
     text-align: center;
     flex-grow: 1;
     margin: 0 5px;
-    font-size: 32px;
+    font-size: 24px;
 }
 
 .forecast-day img {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
 }
-
-footer {
-    width: 100%;
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 1em 0;
-    margin-top: auto; /* Asegura que el footer se mantenga en la parte inferior */
-    box-sizing: border-box;
-    position: absolute;
-    left: 0;
-}
-
-@media (max-width: 1360px) {
-
-    .forecast-day {
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 765px) {
-
-    header {
-        padding: 1em;
-    }
-
-    header .logo {
-        font-size: 34px;
-    }
-
-    header .login-register {
-        padding: 2em;
-    }
-
-    header .login-register a {
-        font-size: 1.5em;
-        padding: 1em;
-    }
-
-    main {
-        padding: 5px;
-        overflow: auto; 
-    }
-
-    .search-container {
-        max-width: 80%;
-        margin-top: 24px;
-    }
-
-    .search-container input {
-        padding: 5px;
-        font-size: 32px;
-    }
-
-    .location-info {
-        padding: 0.5em;
-        width: 42rem;
-    }
-
-    .location-info h2 {
-        font-size: 32px;
-    }
-
-    .location-info p {
-        font-size: 32px;
-    }
-
-    .forecast h3 {
-        font-size: 32px;
-    }
-
-    #forecast-container {
-        padding: 1.5em;
-        flex-direction: column;
-        width: 85% ;
-    }
-
-    .forecast-day {
-        margin: 5px 0;
-        font-size: 32px;
-    }
-
-    .forecast-day img {
-        width: 120px;
-        height: 120px;
-    }
-}
-
 
 .form-container {
     position: absolute;
@@ -349,3 +259,95 @@ footer {
 .form-container a:hover {
     text-decoration: underline;
 }
+
+footer {
+    width: 100%;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+    margin-top: auto; /* Asegura que el footer se mantenga en la parte inferior */
+    box-sizing: border-box;
+    position: relative;
+    left: 0;
+    bottom: 0;
+
+}
+
+@media (max-width: 1060px) {
+
+    .forecast-day {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 765px) {
+
+    header {
+        padding: 5em;
+
+    }
+
+    header .logo a {
+        font-size: 24px;
+    }
+
+    header .login-register {
+        padding: 2em;
+    }
+
+    header .login-register a {
+        font-size: 18px;
+        padding: .5em;
+    }
+
+    main {
+        padding: 5px;
+        overflow: auto; 
+    }
+
+    .search-container {
+        max-width: 80%;
+        margin-top: 24px;
+    }
+
+    .search-container input {
+        padding: 5px;
+        font-size: 28px;
+    }
+
+    .location-info {
+        padding: 0.5em;
+        width: 32rem;
+    }
+
+    .location-info h2 {
+        font-size: 32px;
+    }
+
+    .location-info p {
+        font-size: 32px;
+    }
+
+    .forecast h3 {
+        font-size: 32px;
+    }
+
+    #forecast-container {
+        padding: 1.5em;
+        flex-direction: column;
+        width: 85% ;
+    }
+
+    .forecast-day {
+        margin: 5px 0;
+        font-size: 32px;
+    }
+
+    .forecast-day img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
