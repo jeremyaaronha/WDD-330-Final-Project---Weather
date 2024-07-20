@@ -1,5 +1,5 @@
 body {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     background-color: #212529;
     color: #333;
     margin: 0;
@@ -11,8 +11,11 @@ body {
     /* background: url("../images/vintage-world.jpeg") no-repeat center center/cover;  */
     box-sizing: border-box; 
     overflow: auto; 
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
-
+header, footer, .footer-content, .footer-bottom, .location-info, .forecast-day {
+    font-family: inherit;
+}
 header {
     display: flex;
     justify-content: space-between;
