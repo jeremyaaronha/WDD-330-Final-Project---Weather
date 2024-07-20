@@ -6,11 +6,13 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: 'src/index.html',
-      input: 'src/partials/header.html',
-      input: 'src/partials/footer.html',
-      input: 'src/login/login.html.html',
-      input: 'src/register/register.html'
+      input: {
+        main: 'src/index.html',
+        header: 'src/partials/header.html',
+        footer: 'src/partials/footer.html',
+        login: 'src/login/login.html',
+        register: 'src/register/register.html'
+      },
     },
   },
   server: {
