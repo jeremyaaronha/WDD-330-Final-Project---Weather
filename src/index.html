@@ -8,11 +8,22 @@
     <link rel="stylesheet" href="./styles/styles.css">
     <script src="../scripts/loadHeaderFooter.js" type="module" defer></script>
     <script src="./scripts/main.js" type="module"></script>
+    <script src="./scripts/themeToggle.js" defer></script>
 
 </head>
 <body>
+
     <header></header>
+    <input type="checkbox" id="toggle">
+    
     <main>
+        <div class='ripple-background'>
+            <div class='circle xxlarge shade1'></div>
+            <div class='circle xlarge shade2'></div>
+            <div class='circle large shade3'></div>
+            <div class='circle mediun shade4'></div>
+            <div class='circle small shade5'></div>
+          </div>
         <div class="search-container">
             <div class="search-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">

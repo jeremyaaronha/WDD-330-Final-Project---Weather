@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // const loginCloseButton = document.getElementById("login-close");
     // const registerCloseButton = document.getElementById("register-close");
     let isCelsius = true; // Variable para controlar la unidad de medida
-
     const apiKey = "0066e3596484e7ae608d23fe3959f109"; 
     const geoDbApiKey = "e910cc3969msh71ab17d4f77c665p1b6bfajsn5ecd6ff742cf"; 
+
 
     const fetchWeatherData = async (latitude, longitude) => {
         try {

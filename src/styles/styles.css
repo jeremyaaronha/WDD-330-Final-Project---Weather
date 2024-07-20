@@ -49,13 +49,13 @@ header .login-register {
 }
 
 header #login-button, header #register-button {
-    background-color: rgba(102, 192, 115, 0.839);
+    background: #14528f;
     padding: 1em;
     border-radius: 375rem; 
 }
 
 header #login-button:hover, #register-button:hover {
-    background-color: rgba(77, 142, 87, 0.839);
+    background: #0f3f6e;
 }
 
 header .login-register a {
@@ -67,6 +67,133 @@ header .login-register a {
 
 header .login-register a:hover {
     text-decoration: none;
+}
+
+/* Boton Claro - Oscuro */
+#toggle {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 60px;
+    height: 30px;
+    border-radius: 30px;
+    background-color: rgb(92, 92, 92);
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: rgb(81, 80, 80) .5px .5px .5px;
+}
+  
+#toggle::before {
+    content: "";
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #EEE;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: all 0.5s ease-in;
+}
+  
+#toggle:checked {
+    background: #b6bfba;
+}
+  
+#toggle:checked::before {
+    background: #333;
+    left: 32px;
+}
+
+/* modo claro y oscuro */
+body.light-mode {
+    background: #3399ff;
+    color: #000;
+} 
+  
+  .circle{
+    position: absolute;
+    border-radius: 50%;
+    background: white;
+    animation: ripple 15s infinite;
+    box-shadow: 0px 0px 1px 0px #508fb9;
+  }
+  
+  .small{
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    bottom: -100px;
+  }
+  
+  .medium{
+    width: 400px;
+    height: 400px;
+    left: -200px;
+    bottom: -200px;
+  }
+  
+  .large{
+    width: 600px;
+    height: 600px;
+    left: -300px;
+    bottom: -300px;
+  }
+  
+  .xlarge{
+    width: 800px;
+    height: 800px;
+    left: -400px;
+    bottom: -400px;
+  }
+  
+  .xxlarge{
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    bottom: -500px;
+  }
+  
+  .shade1{
+    opacity: 0.2;
+  }
+  .shade2{
+    opacity: 0.5;
+  }
+  
+  .shade3{
+    opacity: 0.7;
+  }
+  
+  .shade4{
+    opacity: 0.8;
+  }
+  
+  .shade5{
+    opacity: 0.9;
+  }
+  
+  @keyframes ripple{
+    0%{
+      transform: scale(0.8);
+    }
+    
+    50%{
+      transform: scale(1.2);
+    }
+    
+    100%{
+      transform: scale(0.8);
+    }
+  }
+
+body.dark-mode {
+    background-color: #212529;
+    color: #FFF;
 }
 
 main {
@@ -112,6 +239,30 @@ main {
     color: white;
 }
 
+body.light-mode .search-container input  {
+    background-color: white;
+    color: #000;
+}
+
+body.light-mode .bi-search {
+    color: rgb(117, 117, 117);
+}
+
+body.light-mode .location-info {
+    background: #14528f;
+}
+
+body.light-mode #forecast-container {
+    background: #14528f;
+
+}
+body.light-mode .forecast-day{
+    background: #1d77d1;
+
+}
+body.light-mode
+body.light-mode 
+
 .search-container input:focus {
     outline: none;
     border-color: #898989;
@@ -154,13 +305,14 @@ main {
     font-size: 28px;
     text-decoration: none;
     border-radius: 375rem ;
-    background-color: rgba(102, 192, 115, 0.839);
+    background: #14528f;
     border: none;
     color: #ffffff;
+    z-index: 1;
 }
 
 #unit-toggle:hover {
-    background-color: rgba(77, 142, 87, 0.839);
+    background: #0f3f6e;
 }
 
 .location-info {
@@ -176,6 +328,8 @@ main {
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
+    z-index: 1;
+
 }
 
 #temperature img {
@@ -200,6 +354,7 @@ main {
 
 #forecast-container {
     display: flex;
+    z-index: 1;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
@@ -212,7 +367,7 @@ main {
 }
 
 .forecast-day {
-    background: rgba(102, 192, 115, 0.839);
+    background: #343b44;
     border-radius: 10px;
     padding: 10px;
     text-align: center;
@@ -234,7 +389,7 @@ main {
     background-color: #212529;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     z-index: 100;
     width: 32rem;
     height: 30rem;
@@ -261,15 +416,14 @@ main {
     margin: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff;
+    background: #14528f;
     color: white;
     cursor: pointer;
-    background-color: rgba(102, 192, 115, 0.839);
     font-size: 24px;
 }
 
 .form-container button:hover {
-    background-color: rgba(77, 142, 87, 0.839);
+    background: #0f3f6e;
 }
 
 .form-container p {
@@ -287,18 +441,87 @@ main {
 }
 
 footer {
-    width: 100%;
-    background: #333;
+    background-color: #333;
     color: #fff;
+    padding: 2em 0;
+    width: 100%;
     text-align: center;
-    padding: 1em 0;
-    margin-top: auto; /* Asegura que el footer se mantenga en la parte inferior */
     box-sizing: border-box;
     position: relative;
     left: 0;
     bottom: 0;
-
+    font-size: 16px;
+    margin-top: 5rem;
 }
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    padding: 10px;
+    min-width: 180px;
+}
+
+.footer-section h2 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.footer-section p, 
+.footer-section ul,
+.footer-section li {
+    margin: 5px 0;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #444;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-section {
+        min-width: 100%;
+        text-align: left;
+    }
+}
+
+
+
 
 @media (max-width: 1060px) {
 
@@ -390,4 +613,5 @@ footer {
 
 
 }
+
 
