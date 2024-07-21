@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const identifier = loginForm.querySelector('input[type="text"]').value; // Puede ser correo electrónico o nombre de usuario
+        const identifier = loginForm.querySelector('input[type="text"]').value; 
         const password = loginForm.querySelector('input[type="password"]').value;
 
         const users = JSON.parse(localStorage.getItem('users')) || [];

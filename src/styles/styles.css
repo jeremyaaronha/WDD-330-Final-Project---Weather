@@ -1,5 +1,4 @@
 body {
-    /* font-family: 'Roboto', sans-serif; */
     background-color: #212529;
     color: #333;
     margin: 0;
@@ -8,7 +7,6 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh; 
-    /* background: url("../images/vintage-world.jpeg") no-repeat center center/cover;  */
     box-sizing: border-box; 
     overflow: auto; 
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -22,7 +20,6 @@ header {
     align-items: center;
     color: #fff;
     width: 100%;
-    /* background: linear-gradient(180deg, rgb(99, 99, 99) 0%, rgba(0, 0, 0, 0) 100%); */
     padding: 3.5em 0;
     background-color: #212529;
 }
@@ -385,14 +382,9 @@ body.light-mode
 }
 
 .form-container {
-    /* position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
     background-color: #212529;
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     z-index: 100;
     width: 32rem;
     height: 30rem;
@@ -522,9 +514,6 @@ footer {
         text-align: left;
     }
 }
-
-
-
 
 @media (max-width: 1060px) {
 

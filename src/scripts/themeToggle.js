@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById('toggle');
 
-    // Check for saved user preferences and apply
+    // Preferencias del usuario (PENDIENTES)
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         document.body.classList.add(savedTheme);
         toggle.checked = savedTheme === 'dark-mode';
     }
 
-    // Event listener for the toggle button
     toggle.addEventListener('change', () => {
         if (toggle.checked) {
             document.body.classList.remove('light-mode');
