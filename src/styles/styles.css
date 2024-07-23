@@ -191,11 +191,6 @@ body.light-mode {
     }
   }
 
-body.dark-mode {
-    background-color: #212529;
-    color: #FFF;
-}
-
 main {
     display: flex;
     flex-direction: column;
@@ -238,30 +233,6 @@ main {
     background-color: #212529;
     color: white;
 }
-
-body.light-mode .search-container input  {
-    background-color: white;
-    color: #000;
-}
-
-body.light-mode .bi-search {
-    color: rgb(117, 117, 117);
-}
-
-body.light-mode .location-info {
-    background: #14528f;
-}
-
-body.light-mode #forecast-container {
-    background: #14528f;
-
-}
-body.light-mode .forecast-day{
-    background: #1d77d1;
-
-}
-body.light-mode
-body.light-mode 
 
 .search-container input:focus {
     outline: none;
@@ -314,6 +285,7 @@ body.light-mode
 #unit-toggle:hover {
     background: #0f3f6e;
 }
+
 
 .location-info {
     background-color: #2b3035;
@@ -606,4 +578,29 @@ footer {
 
 }
 
+body.light-mode .search-container input  {
+    background-color: white;
+    color: #000;
+}
 
+body.light-mode .bi-search {
+    color: rgb(117, 117, 117);
+}
+
+body.light-mode .location-info {
+    background: #14528f;
+}
+
+body.light-mode #forecast-container {
+    background: #14528f;
+
+}
+body.light-mode .forecast-day{
+    background: #1d77d1;
+
+}
+
+body.dark-mode {
+    background-color: #212529;
+    color: #FFF;
+}
