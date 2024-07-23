@@ -316,7 +316,9 @@ main {
 }
 
 .location-info p {
-    font-size: 32px;
+    font-size: 28px;
+    padding: 10px;
+    margin: 0px;
 }
 
 .forecast {
