@@ -97,15 +97,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 const forecastElem = document.createElement('div');
                 forecastElem.classList.add('forecast-day');
                 forecastElem.innerHTML = `
-                    <p>${formattedDate}</p>
-                    <img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">
-                    <p>${capitalizeFirstLetter(weatherDescription)}</p>
-                    <p>Min: ${minTemp} °${isCelsius ? 'C' : 'F'}</p>
-                    <p>Max: ${maxTemp} °${isCelsius ? 'C' : 'F'}</p>
-                    <p>Wind Speed: ${windSpeed} ${isCelsius ? 'm/s' : 'mph'}</p>
-                    <p>Pressure: ${pressure} hPa</p>
-                    <p>Visibility: ${visibility} km</p>
-                    <p>Cloudiness: ${cloudiness}%</p>
+                    <p id="day">${formattedDate}</p>
+                    <img id="forecast-img" src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">
+                    <p id="temperature-description">${capitalizeFirstLetter(weatherDescription)}</p>
+                    <p id="min-temperature">Min: ${minTemp} °${isCelsius ? 'C' : 'F'}</p>
+                    <p id="max-temperature">Max: ${maxTemp} °${isCelsius ? 'C' : 'F'}</p>
+                    <p id="wind-speed">Wind Speed: ${windSpeed} ${isCelsius ? 'm/s' : 'mph'}</p>
+                    <p id="pressure">Pressure: ${pressure} hPa</p>
+                    <p id="visibility">Visibility: ${visibility} km</p>
+                    <p id="cloudiness">Cloudiness: ${cloudiness}%</p>
                 `;
                 forecastContainer.appendChild(forecastElem);
             });

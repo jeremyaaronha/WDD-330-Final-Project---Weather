@@ -42,12 +42,22 @@
         <div class="location-info">
             <h2 id="city-name">City</h2>
             <p id="temperature">Temperature</p>
-            <p id="weather-description">Description</p>
-            <p id="wind-speed">Wind Speed: </p>
-            <p id="humidity">Humidity: </p>
-            <p id="pressure">Pressure</p>
-            <p id="visibility">Visibility: </p>
-            <p id="cloudiness">Cloudiness: </p>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <p id="weather-description">Weather Description</p>
+                    <p id="humidity">Humidity</p>
+                </div>
+                <div class="detail-item">
+                    <p id="wind-speed">Wind Speed</p>
+                    <p id="pressure">Pressure</p>
+                </div>
+                <div class="detail-item">
+                    <p id="visibility">Visibility</p>
+                </div>
+                <div class="detail-item">
+                    <p id="cloudiness">Cloudiness</p>
+                </div>
+            </div>
         </div>
         <button id="unit-toggle">Switch to °F</button>
         <div id="forecast-container"></div>

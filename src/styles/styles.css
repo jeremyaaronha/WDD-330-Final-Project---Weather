@@ -30,6 +30,8 @@ header .logo {
     left: 10px;
     font-size: 2em;
     text-decoration: none;
+    font-weight: 300;
+
 }
 
 header .logo a {
@@ -46,6 +48,7 @@ header .login-register {
     backdrop-filter: blur(10px); 
     border: none;
     color: rgb(255, 255, 255);
+    font-weight: 300;
 }
 
 header #login-button, header #register-button {
@@ -232,6 +235,8 @@ main {
     max-height: 40em;
     background-color: #212529;
     color: white;
+    font-weight: 300;
+
 }
 
 .search-container input:focus {
@@ -261,6 +266,8 @@ main {
 .suggestion {
     padding: 10px;
     cursor: pointer;
+    font-weight: 300;
+
 }
 
 .suggestion:hover {
@@ -294,14 +301,14 @@ main {
     color: rgb(255, 255, 255);
     text-align: center;
     width: 32rem;
-    padding: .5em;
+    padding: .7em;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center; 
     justify-content: center; 
     z-index: 1;
-
+    font-weight: 500;
 }
 
 #temperature img {
@@ -310,16 +317,38 @@ main {
     width: 100px;
 }
 
+#temperature {
+    font-size: 32px;
+    font-weight: 300;
+
+}
+
 .location-info h2 {
     font-size: 32px;
     margin-bottom: .1em;
+    font-weight: 300;
+
 }
 
 .location-info p {
-    font-size: 28px;
+    font-size: 24px;
     padding: 10px;
     margin: 0px;
+    text-align: left;
+
 }
+
+.weather-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 10px; /* Espacio entre los elementos */
+    width: 100%;
+    margin-top: 1em;
+    font-weight: 300;
+    
+}
+
+
 
 .forecast {
     margin-top: 10px;
@@ -347,7 +376,17 @@ main {
     text-align: center;
     flex-grow: 1;
     margin: 0 5px;
+    font-size: 16px;
+}
+
+.forecast-day #temperature-description, #day, #min-temperature, #max-temperature, #forecast-img {
     font-size: 24px;
+    font-weight: 300;
+}
+
+#wind-speed, #pressure, #visibility, #cloudiness {
+    text-align: left;
+    font-weight: 300;
 }
 
 .forecast-day img {
@@ -436,6 +475,7 @@ footer {
     flex: 1;
     padding: 10px;
     min-width: 180px;
+    font-weight: 300;
 }
 
 .footer-section h2 {
@@ -468,6 +508,15 @@ footer {
     padding-top: 10px;
     border-top: 1px solid #444;
     font-size: 14px;
+}
+
+.footer-bottom a {
+    text-decoration: none;
+    color: white;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
 }
 
 @media (max-width: 768px) {

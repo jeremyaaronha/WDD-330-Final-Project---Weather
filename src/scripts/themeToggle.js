@@ -1,12 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
     const toggle = document.getElementById('toggle');
 
-    // Preferencias del usuario (PENDIENTES)
-    // const savedTheme = localStorage.getItem('theme');
-    // if (savedTheme) {
-    //     document.body.classList.add(savedTheme);
-    //     toggle.checked = savedTheme === 'dark-mode';
-    // }
+    // Obtener la preferencia de tema guardada del usuario
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        document.body.classList.add(savedTheme);
+        toggle.checked = savedTheme === 'dark-mode';
+    } else {
+        // Si no hay preferencia guardada, establecer modo claro por defecto
+        document.body.classList.add('light-mode');
+        toggle.checked = false;
+    }
 
     toggle.addEventListener('change', () => {
         if (toggle.checked) {
