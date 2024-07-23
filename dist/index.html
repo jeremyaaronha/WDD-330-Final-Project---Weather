@@ -9,10 +9,12 @@
     
     
     
+    
 
-  <script type="module" crossorigin src="/assets/main-6a40b20d.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/loadHeaderFooter-d7a9e1d1.js">
-  <link rel="stylesheet" href="/assets/loadHeaderFooter-bd6e8ee1.css">
+
+  <script type="module" crossorigin src="/assets/main-736ac1ea.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/loadHeaderFooter-0cad317b.js">
+  <link rel="stylesheet" href="/assets/loadHeaderFooter-482fe336.css">
 </head>
 <body>
 
@@ -20,6 +22,11 @@
     <input type="checkbox" id="toggle">
     
     <main>
+        <div id="welcome-banner" class="banner hidden">
+            <p>Welcome to the Weather App! We hope you have a great experience.</p>
+            <button id="close-banner">Close</button>
+        </div>
+        
         <div class='ripple-background'>
             <div class='circle xxlarge shade1'></div>
             <div class='circle xlarge shade2'></div>
@@ -39,6 +46,22 @@
         <div class="location-info">
             <h2 id="city-name">City</h2>
             <p id="temperature">Temperature</p>
+            <div class="weather-details">
+                <div class="detail-item">
+                    <p id="weather-description">Weather Description</p>
+                    <p id="humidity">Humidity</p>
+                </div>
+                <div class="detail-item">
+                    <p id="wind-speed">Wind Speed</p>
+                    <p id="pressure">Pressure</p>
+                </div>
+                <div class="detail-item">
+                    <p id="visibility">Visibility</p>
+                </div>
+                <div class="detail-item">
+                    <p id="cloudiness">Cloudiness</p>
+                </div>
+            </div>
         </div>
         <button id="unit-toggle">Switch to °F</button>
         <div id="forecast-container"></div>
