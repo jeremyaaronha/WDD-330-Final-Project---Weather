@@ -516,6 +516,10 @@ footer {
     .forecast-day {
         font-size: 18px;
     }
+
+    .location-info {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 765px) {
@@ -558,11 +562,11 @@ footer {
     }
 
     .location-info h2 {
-        font-size: 32px;
+        font-size: 18px;
     }
 
     .location-info p {
-        font-size: 32px;
+        font-size: 16px;
     }
 
     .forecast h3 {
@@ -577,7 +581,7 @@ footer {
 
     .forecast-day {
         margin: 5px 0;
-        font-size: 32px;
+        font-size: 16px;
     }
 
     .forecast-day img {
@@ -587,8 +591,21 @@ footer {
 
     .form-container {
         width: 25rem;
-        height: 28rem;
-        margin-top: 1.5rem;
+        height: auto;
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .form-container input {
+        font-size: 20px;
+        padding: 8px;
+        margin: 8px;
+    }
+
+    .form-container button {
+        padding: 12px;
+        margin: 8px;
+        font-size: 20px;
     }
 
     .footer-content {
@@ -652,7 +669,7 @@ footer {
     }
 
     .weather-details {
-        grid-template-columns: 1fr; /* Una columna */
+        grid-template-columns: 1fr; 
     }
 
     #unit-toggle {
@@ -695,6 +712,35 @@ footer {
     .footer-section {
         min-width: 100%;
         text-align: left;
+    }
+
+    .form-container {
+        width: 80%;
+        height: auto;
+        padding: 10px;
+        margin-top: 1rem;
+        border-radius: 0;
+        font-size: 18px;
+    }
+
+    .form-container input {
+        font-size: 18px;
+        padding: 6px;
+        margin: 6px;
+    }
+
+    .form-container button {
+        padding: 10px;
+        margin: 6px;
+        font-size: 18px;
+    }
+
+    .form-container p {
+        font-size: 16px;
+    }
+
+    .form-container a {
+        font-size: 16px;
     }
 }
 
