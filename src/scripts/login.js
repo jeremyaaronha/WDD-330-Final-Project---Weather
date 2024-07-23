@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault();
-        const identifier = loginForm.querySelector('input[type="text"]').value; 
+        const identifier = loginForm.querySelector('input[type="text"]').value;
         const password = loginForm.querySelector('input[type="password"]').value;
 
         const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -13,6 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
             alert(`Welcome, ${user.username}!`);
             localStorage.setItem("loggedInUser", JSON.stringify(user));
             window.location.href = "../index.html";
+
+            const savedTheme = localStorage.getItem(`${user.username}-theme`);
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+                toggle.checked = savedTheme === 'dark-mode';
+            } else {
+                document.body.classList.add('light-mode');
+                toggle.checked = false;
+            }
+
         } else {
             alert('Invalid email/username or password. Please try again.');
         }
