@@ -604,3 +604,52 @@ body.dark-mode {
     background-color: #212529;
     color: #FFF;
 }
+
+/* --- BANNER --- */
+
+.banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #14528f;
+    color: white;
+    padding: 120px;
+    font-size: 50px;
+    width: 80%;
+    text-align: center;
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    animation: slideDown 1s ease-in-out forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translate(-50%, -100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+.banner button {
+    background: #0f3f6e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.banner button:hover {
+    background: #0b2d4f;
+}

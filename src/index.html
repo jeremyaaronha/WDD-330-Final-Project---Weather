@@ -9,6 +9,7 @@
     <script src="./scripts/loadHeaderFooter.js" type="module" ></script>
     <script src="./scripts/main.js" type="module"></script>
     <script src="./scripts/themeToggle.js" type="module" ></script>
+    <script src="./scripts/banner.js" ></script>
 
 </head>
 <body>
@@ -17,6 +18,11 @@
     <input type="checkbox" id="toggle">
     
     <main>
+        <div id="welcome-banner" class="banner hidden">
+            <p>Welcome to the Weather App! We hope you have a great experience.</p>
+            <button id="close-banner">Close</button>
+        </div>
+        
         <div class='ripple-background'>
             <div class='circle xxlarge shade1'></div>
             <div class='circle xlarge shade2'></div>
