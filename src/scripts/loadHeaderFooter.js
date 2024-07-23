@@ -23,13 +23,12 @@ const updateHeaderForLoggedInUser = (username) => {
     const logoutLink = document.getElementById("logout");
     logoutLink.addEventListener("click", (e) => {
         e.preventDefault();
-        localStorage.removeItem("loggedInUser");
-        // Remove user-specific theme preferences
-        const theme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
         const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
-        if (loggedInUser) {
-            localStorage.setItem(`${loggedInUser.username}-theme`, theme);
-        }
+        const theme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
+        const unit = localStorage.getItem(`${loggedInUser.username}-unit`) === 'metric' ? 'metric' : 'imperial'; // Cambiado aquí
+        localStorage.setItem(`${loggedInUser.username}-theme`, theme);
+        localStorage.setItem(`${loggedInUser.username}-unit`, unit);
+        localStorage.removeItem("loggedInUser");
         location.reload();
     });
 };

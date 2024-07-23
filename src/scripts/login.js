@@ -17,10 +17,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const savedTheme = localStorage.getItem(`${user.username}-theme`);
             if (savedTheme) {
                 document.body.classList.add(savedTheme);
-                toggle.checked = savedTheme === 'dark-mode';
+                document.getElementById('toggle').checked = savedTheme === 'dark-mode';
             } else {
                 document.body.classList.add('light-mode');
-                toggle.checked = false;
+                document.getElementById('toggle').checked = false;
+            }
+
+            const savedUnit = localStorage.getItem(`${user.username}-unit`);
+            if (savedUnit) {
+                isCelsius = savedUnit === 'metric';
+                document.getElementById('unit-toggle').textContent = `Switch to °${isCelsius ? 'F' : 'C'}`;
             }
 
         } else {

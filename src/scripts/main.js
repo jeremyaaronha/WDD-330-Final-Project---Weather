@@ -1,29 +1,35 @@
-// apiKey = "0066e3596484e7ae608d23fe3959f109";
-console.log('Weather App is running!');
-const capitalizeFirstLetter = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-};
+let isCelsius = true;
 
 document.addEventListener("DOMContentLoaded", () => {
+
     const cityNameElem = document.getElementById("city-name");
     const temperatureElem = document.getElementById("temperature");
-    const weatherDescriptionElem = document.getElementById("weather-description");
-    const windSpeedElem = document.getElementById("wind-speed");
-    const humidityElem = document.getElementById("humidity");
-    const pressureElem = document.getElementById('pressure');
-    const visibilityElem = document.getElementById('visibility');
-    const cloudinessElem = document.getElementById('cloudiness');
     const forecastContainer = document.getElementById("forecast-container");
     const searchInput = document.querySelector(".search-container input");
     const suggestionsContainer = document.querySelector('.suggestions-container');
     const unitToggle = document.getElementById("unit-toggle");
-    let isCelsius = true;
 
     const apiKey = "0066e3596484e7ae608d23fe3959f109"; 
+    const geoDbApiKey = "e910cc3969msh71ab17d4f77c665p1b6bfajsn5ecd6ff742cf"; 
+
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (loggedInUser) {
+        const savedUnit = localStorage.getItem(`${loggedInUser.username}-unit`);
+        if (savedUnit) {
+            isCelsius = savedUnit === 'metric';
+            unitToggle.textContent = `Switch to °${isCelsius ? 'F' : 'C'}`;
+        }
+    } else {
+        const savedUnit = localStorage.getItem('unit');
+        if (savedUnit) {
+            isCelsius = savedUnit === 'metric';
+            unitToggle.textContent = `Switch to °${isCelsius ? 'F' : 'C'}`;
+        }
+    }
 
     const fetchWeatherData = async (latitude, longitude) => {
         try {
-            const units = isCelsius ? 'metric' : 'imperial'; 
+            const units = isCelsius ? 'metric' : 'imperial';
             const weatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`);
 
             if (!weatherResponse.ok) {
@@ -34,23 +40,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const city = weatherData.name;
             const country = weatherData.sys.country;
             const temperature = weatherData.main.temp;
-            const weatherDescription = weatherData.weather[0].description.charAt(0).toUpperCase() + weatherData.weather[0].description.slice(1);
+            const weatherIcon = weatherData.weather[0].icon;
+            const weatherDescription = weatherData.weather[0].description;
             const windSpeed = weatherData.wind.speed;
             const humidity = weatherData.main.humidity;
-            const weatherIcon = weatherData.weather[0].icon;
             const pressure = weatherData.main.pressure;
-            const visibility = weatherData.visibility / 1000; // Convertir de metros a kilómetros
+            const visibility = weatherData.visibility;
             const cloudiness = weatherData.clouds.all;
-
 
             cityNameElem.textContent = `Temperature in ${city}, ${country}`;
             temperatureElem.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">${temperature} °${isCelsius ? 'C' : 'F'}`;
-            weatherDescriptionElem.textContent = `${weatherDescription}`;
-            windSpeedElem.textContent = `Wind Speed: ${windSpeed} ${isCelsius ? 'm/s' : 'mph'}`;
-            humidityElem.textContent = `Humidity: ${humidity}%`;
-            pressureElem.textContent = `Pressure: ${pressure} hPa`;
-            visibilityElem.textContent = `Visibility: ${visibility} km`;
-            cloudinessElem.textContent = `Cloudiness: ${cloudiness}%`;
+            document.getElementById('weather-description').textContent = `${weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1)}`;
+            document.getElementById('wind-speed').textContent = `Wind Speed: ${windSpeed} ${isCelsius ? 'm/s' : 'mph'}`;
+            document.getElementById('humidity').textContent = `Humidity: ${humidity}%`;
+            document.getElementById('pressure').textContent = `Pressure: ${pressure} hPa`;
+            document.getElementById('visibility').textContent = `Visibility: ${visibility} m`;
+            document.getElementById('cloudiness').textContent = `Cloudiness: ${cloudiness}%`;
 
             const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`);
 
@@ -67,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!acc[date]) {
                     acc[date] = [];
                 }
-                acc[date].push(curr);
+                acc[date].push(curr.main.temp_min, curr.main.temp_max);
                 return acc;
             }, {});
 
@@ -79,15 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             forecastContainer.innerHTML = '';
             forecastDays.forEach(date => {
-                const forecasts = dailyForecasts[date];
-                const minTemp = Math.min(...forecasts.map(f => f.main.temp_min));
-                const maxTemp = Math.max(...forecasts.map(f => f.main.temp_max));
-                const weatherDescription = forecasts[0].weather[0].description;
-                const windSpeed = forecasts[0].wind.speed;
-                const weatherIcon = forecasts[0].weather[0].icon;
-                const pressure = forecasts[0].main.pressure;
-                const visibility = forecasts[0].visibility / 1000;
-                const cloudiness = forecasts[0].clouds.all;
+                const temps = dailyForecasts[date];
+                const minTemp = Math.min(...temps);
+                const maxTemp = Math.max(...temps);
 
                 const dayDate = new Date(date);
                 const dayName = daysOfWeek[dayDate.getUTCDay()];
@@ -97,15 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 const forecastElem = document.createElement('div');
                 forecastElem.classList.add('forecast-day');
                 forecastElem.innerHTML = `
-                    <p id="day">${formattedDate}</p>
-                    <img id="forecast-img" src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">
-                    <p id="temperature-description">${capitalizeFirstLetter(weatherDescription)}</p>
-                    <p id="min-temperature">Min: ${minTemp} °${isCelsius ? 'C' : 'F'}</p>
-                    <p id="max-temperature">Max: ${maxTemp} °${isCelsius ? 'C' : 'F'}</p>
-                    <p id="wind-speed">Wind Speed: ${windSpeed} ${isCelsius ? 'm/s' : 'mph'}</p>
-                    <p id="pressure">Pressure: ${pressure} hPa</p>
-                    <p id="visibility">Visibility: ${visibility} km</p>
-                    <p id="cloudiness">Cloudiness: ${cloudiness}%</p>
+                    <p>${formattedDate}</p>
+                    <img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png" alt="${weatherDescription}">
+                    <p>${weatherDescription.charAt(0).toUpperCase() + weatherDescription.slice(1)}</p>
+                    <p>Min: ${minTemp} °${isCelsius ? 'C' : 'F'}</p>
+                    <p>Max: ${maxTemp} °${isCelsius ? 'C' : 'F'}</p>
+                    <p>Wind Speed: ${windSpeed} ${isCelsius ? 'm/s' : 'mph'}</p>
+                    <p>Humidity: ${humidity}%</p>
+                    <p>Pressure: ${pressure} hPa</p>
                 `;
                 forecastContainer.appendChild(forecastElem);
             });
@@ -114,9 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error('Error fetching the weather data:', error);
             cityNameElem.textContent = "Error retrieving weather data.";
             temperatureElem.textContent = "";
-            weatherDescriptionElem.textContent = "";
-            windSpeedElem.textContent = "";
-            humidityElem.textContent = "";
         }
     };
 
@@ -135,17 +130,15 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error('Error fetching the weather data:', error);
             cityNameElem.textContent = "Error retrieving weather data.";
             temperatureElem.textContent = "";
-            weatherDescriptionElem.textContent = "";
-            windSpeedElem.textContent = "";
-            humidityElem.textContent = "";
         }
     };
+
     const fetchCitySuggestions = async (query) => {
         try {
             const response = await fetch(`https://wft-geo-db.p.rapidapi.com/v1/geo/cities?namePrefix=${query}`, {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': "e910cc3969msh71ab17d4f77c665p1b6bfajsn5ecd6ff742cf",
+                    'X-RapidAPI-Key': geoDbApiKey,
                     'X-RapidAPI-Host': 'wft-geo-db.p.rapidapi.com'
                 }
             });
@@ -215,7 +208,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (city) {
             fetchWeatherByCity(city);
         }
+        if (loggedInUser) {
+            localStorage.setItem(`${loggedInUser.username}-unit`, isCelsius ? 'metric' : 'imperial');
+        }
+        localStorage.setItem('unit', isCelsius ? 'metric' : 'imperial');
     });
-
 });
-
