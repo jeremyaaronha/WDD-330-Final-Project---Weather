@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
             toggle.checked = false;
         }
     } else {
-        // Si no hay usuario conectado, aplicar tema predeterminado
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             document.body.classList.add(savedTheme);
