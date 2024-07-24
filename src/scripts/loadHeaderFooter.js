@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
     fetch("../partials/header.html")
         .then(response => response.text())
