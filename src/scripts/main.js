@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const cloudiness = weatherData.clouds.all;
 
             cityNameElem.textContent = `Temperature in ${city}, ${country}`;
-            temperatureElem.innerHTML = `<img src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">${temperature} °${isCelsius ? 'C' : 'F'}`;
+            temperatureElem.innerHTML = `<img src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">${temperature} °${isCelsius ? 'C' : 'F'}`;
             weatherDescriptionElem.textContent = `${weatherDescription}`;
             windSpeedElem.textContent = `Wind Speed: ${windSpeed} ${isCelsius ? 'm/s' : 'mph'}`;
             humidityElem.textContent = `Humidity: ${humidity}%`;
