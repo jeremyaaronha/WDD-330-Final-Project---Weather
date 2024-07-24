@@ -1,4 +1,3 @@
-// apiKey = "0066e3596484e7ae608d23fe3959f109";
 console.log('Weather App is running!');
 const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);

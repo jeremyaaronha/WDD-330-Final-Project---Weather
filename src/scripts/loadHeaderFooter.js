@@ -26,7 +26,7 @@ const updateHeaderForLoggedInUser = (username) => {
         e.preventDefault();
         const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
         const theme = document.body.classList.contains('dark-mode') ? 'dark-mode' : 'light-mode';
-        const unit = localStorage.getItem(`${loggedInUser.username}-unit`) === 'metric' ? 'metric' : 'imperial'; // Cambiado aquí
+        const unit = localStorage.getItem(`${loggedInUser.username}-unit`) === 'metric' ? 'metric' : 'imperial'; 
         localStorage.setItem(`${loggedInUser.username}-theme`, theme);
         localStorage.setItem(`${loggedInUser.username}-unit`, unit);
         localStorage.removeItem("loggedInUser");
