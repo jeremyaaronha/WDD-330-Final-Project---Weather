@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 forecastElem.classList.add('forecast-day');
                 forecastElem.innerHTML = `
                 <p id="day">${formattedDate}</p>
-                <img id="forecast-img" src="http://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">
+                <img id="forecast-img" src="https://openweathermap.org/img/wn/${weatherIcon}@2x.png" alt="${weatherDescription}">
                 <p id="temperature-description">${capitalizeFirstLetter(weatherDescription)}</p>
                 <p id="min-temperature">Min: ${minTemp} °${isCelsius ? 'C' : 'F'}</p>
                 <p id="max-temperature">Max: ${maxTemp} °${isCelsius ? 'C' : 'F'}</p>
